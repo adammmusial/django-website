@@ -1,2 +1,5 @@
 # Everything the developer needs in addition  to the production requirements
 -r prod.txt
+
+mypy == 1.8.0
+black == 23.12.1
