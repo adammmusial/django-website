@@ -7,7 +7,7 @@
     <span {% if request.path == contact_url %} Contact {% else %}><a href="{{ contact_url }}">Contact</a>{% endif %}</span>
 
     <span style="float:right">
-        { % if user.is_authenticated %}
+        {% if user.is_authenticated %}
             <span>Hi {{user.username}}</span>
         {% else %}
             <span><a href ="{% url 'login' %}">Login</a></span>
