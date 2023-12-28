@@ -1,7 +1,12 @@
 version: "3.11.7"
 
 x-servie-volumes: &service-volumes
-- ./:/app/:rw,cached
+  - ./:/app/:rw,cached
+
+x-databes-variables: &database-variables
+  POSTGRES_DB: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
 
 services:
   website:
@@ -10,3 +15,15 @@ services:
     volumes: *service-volumes
     ports:
       - "8000:8000"
+
+  db_migrate:
+    image: personal-website:latest
+    command: python manage.py migrate
+    volumes: *service-volumes
+  
+  postgres: 
+    image: postgres
+    port: 
+      - "5432:5432"
+      environment: *database-variables
+  
