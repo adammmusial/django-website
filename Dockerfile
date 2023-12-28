@@ -11,3 +11,11 @@ COPY setup.cfg ./setup.cfg
 COPY personal_website ./personal_website
 
 EXPOSE 8000
+
+
+FROM production as development
+
+COPY requirements/dev.txt ./requirements/dev.txt
+RUN pip install -r /requirements/dev.txt
+
+COPY . . 
