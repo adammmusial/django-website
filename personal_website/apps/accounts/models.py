@@ -22,13 +22,13 @@ class UserPersona(models.Model):
 
 
 class UserProfile(models.Model):
-    #owner
+    # owner
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    
-    #settings
+
+    # settings
     is_full_name_displayed = models.BooleanField(default=True)
 
-    #details
+    # details
     bio = models.CharField(max_length=500, blank=True, null=True)
     website = models.URLField(max_length=200, blank=True, null=True)
     persona = models.ForeignKey(
