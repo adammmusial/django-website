@@ -36,5 +36,8 @@ services:
     ports: 
       - "5433:5432"
     environment: *database-variables
+    volumes: 
+      - db-data:/var/lib/postgresql/data
     
-  
+volumes:
+  db-data:
