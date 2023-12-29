@@ -11,3 +11,16 @@
         padding-bottom: 6rem;
     }
 }
+
+@font-face {
+    font-family: "Montserrat";
+    src:
+    url('static/css/fonts/Montserrat-BlackItalic.ttf') format('truetype'),
+    url('static/css/fonts/Montserrat-BoldItalic.ttf') format('truetype'),
+    url('static/css/fonts/Montserrat-ExtraBoldItalic.ttf') format('truetype'),
+    url('static/css/fonts/Montserrat-SemiBoldItalic.ttf') format('truetype'),
+}
+
+.navbar-brand{
+    font-family: "Montserrat";
+}
