@@ -8,11 +8,17 @@ x-databes-variables: &database-variables
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
 
+x-app-variables: &app-variables
+  <<: *database-variables  
+  POSTGRES_HOST: postgres
+
 services:
   website:
     image: personal-website:latest
     command: python manage.py runserver 0.0.0.0:8000
     volumes: *service-volumes
+    depends_on:
+      - db_migrate
     ports:
       - "8000:8000"
 
@@ -20,10 +26,15 @@ services:
     image: personal-website:latest
     command: python manage.py migrate
     volumes: *service-volumes
+    environment: *app-variables
+    depends_on:
+      - postgres
+
   
   postgres: 
     image: postgres
-    port: 
-      - "5432:5432"
-      environment: *database-variables
+    ports: 
+      - "5433:5432"
+    environment: *database-variables
+    
   
