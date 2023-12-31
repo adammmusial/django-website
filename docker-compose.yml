@@ -6,7 +6,7 @@ x-service-volumes: &service-volumes
 x-database-variables: &database-variables
   POSTGRES_DB: postgres
   POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres§    §QA qwer678
+  POSTGRES_PASSWORD: postgres
 
 x-app-variables: &app-variables
   <<: *database-variables  
