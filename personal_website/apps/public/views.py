@@ -9,7 +9,3 @@ def index(request: HttpRequest) -> HttpRequest:
 
 def about(request: HttpRequest) -> HttpRequest:
     return render(request, "about.html")
-
-
-def contact(request: HttpRequest) -> HttpRequest:
-    return render(request, "contact.html")
