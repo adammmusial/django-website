@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "personal_website.apps.accounts",
     "personal_website.apps.public",
+    "personal_website.apps.contact",
 ]
 
 MIDDLEWARE = [
