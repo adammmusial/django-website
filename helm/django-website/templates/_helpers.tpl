@@ -60,3 +60,17 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "django-website.db.env" -}}
+- name: POSTGRES_HOST
+    value: personal-website-postgresql
+- name: POSTGRES_DB
+    value: {{ .Values.postgresql.postgresql.database}}
+- name: POSTGRES_USER
+    value: {{ .Values.postgresql.postgresql.username}}
+- name: POSTGRES_PASSWORD
+    valueFrom:
+        secretKeyRef:
+            name: personal-website-postgresql
+            key: postgressql-password
+{{- end }}

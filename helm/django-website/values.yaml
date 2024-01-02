@@ -98,3 +98,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+postgreqsql:
+  enabled: true
+  postgresql.username: postgres
+  postgresql.database: postgres
+  postgresql.password: postgres

@@ -24,5 +24,8 @@ compose-manage-py:
 start-server:
 	python manage.py runserver 0.0.0.0:80
 
+migrate:
+	python manage.py migrate
+
 helm-deploy:
 	helm upgrade --install personal-website ./helm/django-website

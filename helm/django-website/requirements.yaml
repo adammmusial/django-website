@@ -1,0 +1,5 @@
+dependencies:
+  - name: postgresql-ha
+    version: 12.3.7
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: postgresql-ha.enabled

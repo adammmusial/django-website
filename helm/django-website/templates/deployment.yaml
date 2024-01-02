@@ -30,6 +30,13 @@ spec:
       serviceAccountName: {{ include "django-website.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: migrations
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["make", "migrate"]
+          env:
+          {{- include "django-website.db.env" . | nindent 10 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -37,6 +44,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["make", "start-server"]
+          {{- include "django-website.db.env" . | nindent 10 }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
